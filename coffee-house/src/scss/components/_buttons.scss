@@ -1,0 +1,59 @@
+.button {
+  padding: 0;
+  //border-radius: #px;
+
+  @extend %font-prim;
+  background-color: $color-primary;
+  //border-radius: $px;
+  border: none;
+  //font-size: $px;
+  //letter-spacing: $px;
+  color: $color-arrow;
+  @extend %transition;
+
+  &:hover {
+    background-color: $color-primary-light;
+    cursor: pointer;
+  }
+}
+
+.card__button {
+  //width: $px;
+  //height: $px;
+  @extend %font-prim;
+  @include font(rem, rem);
+  //letter-spacing: $px;
+  background-color: $color-light-xl;
+  //border: $px solid $color-primary;
+  border-radius: 30px;
+  color: $color-arrow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %transition;
+
+  &:hover {
+    background-color: $color-primary-light;
+    cursor: pointer;
+  }
+}
+
+.button-long {
+  //padding: $px $px;
+  //border-radius: $px;
+
+  @extend %font-prim;
+  background-color: $color-primary;
+  //border-radius: $px;
+  border: none;
+  //font-size: $px;
+  //letter-spacing: $px;
+  color: $color-arrow;
+  //margin-top: $px;
+  @extend %transition;
+
+  &:hover {
+    background-color: $color-primary-light;
+    cursor: pointer;
+  }
+}

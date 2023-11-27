@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+@import 'utils/variables',
+'utils/mixins',
+'utils/placeholders',
+'utils/functions';
+
+@import 'vendors/normalize';
+
+@import 'base/base',
+'base/fonts',
+'base/helpers',
+'base/reset';
+
+@import 'components/logo',
+'components/nav-item',
+'components/buttons',
+'components/slider',
+'components/slider-control',
+'components/hamburger';
+
+@import 'layout/header',
+'layout/main',
+'layout/footer',
+'layout/nav',
+'layout/form',
+'layout/wrapper',
+'layout/grid',
+'layout/columns',
+'layout/contacts';
+
+

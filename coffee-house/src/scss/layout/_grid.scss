@@ -1,0 +1,13 @@
+.grid-main-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+}
+
+.grid-our-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+}

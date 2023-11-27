@@ -1,0 +1,35 @@
+.slider-control {
+  border: 2px solid $color-primary;
+  width: 52px;
+  height: 52px;
+  @extend %font-prim;
+  @include font(2.0rem,23rem);
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %transition;
+  font-size: 20px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+
+}
+
+.slider-control.disabled {
+  width: 52px;
+  height: 52px;
+  border: 2px solid #cdcdcd;
+  border-radius: 100px;
+  background: transparent;
+  color: #cdcdcd;
+  cursor: default;
+}
+
+.slider-control.number {
+  background-color: $color-primary;
+  cursor: default;
+}

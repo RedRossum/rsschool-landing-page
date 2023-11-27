@@ -1,0 +1,35 @@
+.navigation {
+  @include flex();
+  list-style-type: none;
+
+  //column-gap: $px;
+
+  .navigation__link {
+    text-decoration: none;
+
+    @include font(rem, rem);
+
+    color: $color-link;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  @include media-laptop {
+
+  }
+}
+
+.selected_link {
+  text-decoration: underline !important;
+  text-decoration-color: $color-primary !important;
+  //text-decoration-thickness: $px !important;
+  text-underline-position: under;
+  color: $color-primary;
+}
+
+
+
+
+

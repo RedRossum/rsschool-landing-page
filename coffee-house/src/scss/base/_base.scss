@@ -18,7 +18,7 @@ body {
 
 h1 {
   @extend %font-prim;
-  @include font(3.2rem, 3.5rem);
+  @include font(7.2rem, 7.56rem, bold);
   color: $color-primary;
 }
 h2,h3,h4,h5 {

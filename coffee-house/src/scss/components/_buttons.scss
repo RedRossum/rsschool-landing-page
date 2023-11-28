@@ -2,7 +2,7 @@
   width: 200px;
   height: 64px;
 
-  padding: 20px 78px 20px 78px;
+  padding: 20px 78px;
   border-radius: 100px;
   border: none;
 
@@ -11,16 +11,19 @@
   color: $color-text;
 
   background-color: $color-background;
-  background: url("../../assets/icons/coffee-cup.svg") 100% 46% no-repeat;
+
   @extend %transition;
  &_menu {
-   padding: 0;
    width: 100px;
    height: 60px;
+
+   padding: 0;
+
+   background: url("../../assets/icons/coffee-cup.svg") 100% 46% no-repeat;
  }
 
   &:hover {
-    background-color: $color-primary-light;
+    background-color: $color-primary;
     cursor: pointer;
   }
 }
@@ -41,7 +44,7 @@
   @extend %transition;
 
   &:hover {
-    background-color: $color-primary-light;
+    background-color: $color-primary;
     cursor: pointer;
   }
 }
@@ -61,7 +64,7 @@
   @extend %transition;
 
   &:hover {
-    background-color: $color-primary-light;
+    background-color: $color-primary;
     cursor: pointer;
   }
 }

@@ -1,13 +1,17 @@
 .navigation {
-  @include flex();
+  @include flex(center,center,row);
   list-style-type: none;
 
-  //column-gap: $px;
+  column-gap: 42.5px;
+
+  height: 60px;
+
+  margin-right: 12px;
 
   .navigation__link {
     text-decoration: none;
 
-    @include font(rem, rem);
+    @include font(1.6rem, 2.4rem, bold);
 
     color: $color-link;
 

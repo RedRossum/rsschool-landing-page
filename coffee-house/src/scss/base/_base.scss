@@ -10,9 +10,10 @@ html {
 }
 
 body {
-  @include font(1.5rem, 2.4rem);
-  @extend %font-add;
-  color: $color-paragraph;
+  @include font(1.6rem, 2.4rem);
+  @extend %font-prim;
+  color: $color-text;
+  background-color: $color-background;
 }
 
 h1 {

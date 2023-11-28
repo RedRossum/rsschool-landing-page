@@ -1,32 +1,19 @@
 .header {
-  grid-row: 1 ;
-  grid-column: 1;
+
+  margin-top: 20px;
 
   .header__wrapper {
-
-    @include flex(space-between, flex-end, row);
     @include media-laptop {
 
     }
-  }
-
-  .logo__title {
-
-  }
-
-  .logo__text {
-    @include font(rem, rem);
-    color: $color-primary;
   }
 }
 
 .logo {
 
   @include media-laptop {
-
   }
   @include media-tablet {
-
   }
 }
 

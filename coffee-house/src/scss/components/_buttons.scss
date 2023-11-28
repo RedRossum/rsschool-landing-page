@@ -1,15 +1,23 @@
 .button {
-  padding: 0;
-  //border-radius: #px;
+  width: 200px;
+  height: 64px;
+
+  padding: 20px 78px 20px 78px;
+  border-radius: 100px;
+  border: none;
 
   @extend %font-prim;
-  background-color: $color-primary;
-  //border-radius: $px;
-  border: none;
-  //font-size: $px;
-  //letter-spacing: $px;
-  color: $color-arrow;
+  @include font(1.6rem, 2.4rem, bold);
+  color: $color-text;
+
+  background-color: $color-background;
+  background: url("../../assets/icons/coffee-cup.svg") 100% 46% no-repeat;
   @extend %transition;
+ &_menu {
+   padding: 0;
+   width: 100px;
+   height: 60px;
+ }
 
   &:hover {
     background-color: $color-primary-light;

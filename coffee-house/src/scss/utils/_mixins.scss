@@ -12,6 +12,17 @@
   flex-direction: $direction;
 }
 
+@mixin grid($cols, $rows) {
+  display: grid;
+  grid-template-columns: $cols;
+  grid-template-rows: $rows;
+}
+
+@mixin grid-chi($col, $row) {
+  grid-column: $col;
+  grid-row: $row;
+}
+
 @mixin columns($width) {
   display: flex;
   flex-wrap: wrap;

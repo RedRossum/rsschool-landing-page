@@ -1,35 +1,54 @@
 .slider-control {
-  border: 2px solid $color-primary;
-  width: 52px;
-  height: 52px;
-  @extend %font-prim;
-  @include font(2.0rem,23rem);
+  width: 60px;
+  height: 60px;
+
+  border: 1px solid $color-border-dark;
   border-radius: 100%;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @extend %transition;
-  font-size: 20px;
-  font-weight: bold;
 
-  &:hover {
-    background-color: $color-primary;
+  @extend %transition;
+
+  &.right {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    background: url("../../assets/icons/items/arrow-right.svg") 50% 50% no-repeat;
+
+    margin-right: 4px;
+
+    &:hover {
+      background: $color-border-dark url("../../assets/icons/items/arrow-right-light.svg") 50% 50% no-repeat;
+    }
+  }
+
+  &.left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: url("../../assets/icons/items/arrow-left.svg") 50% 50% no-repeat;
+
+    margin-left: 4px;
+
+    &:hover {
+      background: $color-border-dark url("../../assets/icons/items/arrow-left-light.svg") 50% 50% no-repeat;
+    }
   }
 
 }
 
-.slider-control.disabled {
-  width: 52px;
-  height: 52px;
-  border: 2px solid #cdcdcd;
-  border-radius: 100px;
-  background: transparent;
-  color: #cdcdcd;
-  cursor: default;
-}
+.progress-bar-wrapper {
+  @include flex(center);
 
-.slider-control.number {
-  background-color: $color-primary;
-  cursor: default;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+
+  gap: 12px;
+
+  .progress-bar {
+    width: 40px;
+    height: 4px;
+    background-color: $color-border-light;
+    border-radius: 100px;
+    &.active-bar {
+      background: $color-border-dark;
+    }
+  }
 }

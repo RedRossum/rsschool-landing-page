@@ -29,12 +29,13 @@ h1,h3,h4,h5 {
  }
 h2 {
   @extend %font-prim;
-  @include font(4.4rem, 5.72rem);
+  @include font(6rem, 7.5rem, bold);
+  color: $color-text;
 }
 
 h3 {
   @extend %font-prim;
-  @include font(3.5rem, 4.55rem);
+  @include font(2.4rem, 3rem, bold);
 }
 
 h4 {
@@ -46,3 +47,4 @@ h5 {
   @extend %font-prim;
   @include font(1.5rem, 1.65rem);
 }
+

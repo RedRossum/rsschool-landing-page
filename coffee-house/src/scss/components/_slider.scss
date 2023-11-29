@@ -1,91 +1,19 @@
 .slider {
-  @include flex();
+  @include flex(center, center, row);
 
-  @include media-laptop {
-  }
-  @include media-tablet {
-  }
-}
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
 
-.slider__cards {
+  .slider-card {
+    width: 480px;
 
-  @include flex(space-between, center, row);
+    .slider-card__text, .slider-card__title, .slider-card__price {
+      text-align: center;
 
-  @include media-laptop {
-  }
-}
-
-.card {
-  @include flex(space-between, center, column);
-
-  background-color: $color-dark-s;
-
-  @include media-tablet{
-    @include flex(space-between, center, column)
-  }
-
-  .card__img {
-    //width: $px;
-    //height: $px;
-  }
-
-  .card__name {
-    @include font(rem,rem);
-    @extend %font-prim;
-    letter-spacing: $spacing;
-  }
-
-  &:hover {
-    background-color: $color-light-s;
-    //box-shadow: $px $px $px $px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
-
-  &:hover .card__button {
-    background-color: $color-primary;
-    cursor: pointer;
-  }
-
-  &:last-child {
-    @include media-laptop {
-      display: none;
+      margin-top: 17px;
     }
-  }
-
-  &:nth-child(n+7) {
-    @include media-laptop {
-      display: none;
+    .slider-card__price {
+      @include font(2.4rem, 3rem, bold);
     }
-  }
-
-  &:nth-child(n+4) {
-    @include media-tablet {
-      display: none;
-    }
-  }
-
-  &:nth-last-child(2) {
-    @include media-tablet {
-      display: none;
-    }
-  }
-}
-
-.slider-control-navigation {
-
-  @include flex();
-
-  @include media-laptop {
-  }
-  @include media-tablet {
-  }
-}
-
-.left {
-  @include media-tablet {
-  }
-}
-.right {
-  @include media-tablet {
   }
 }

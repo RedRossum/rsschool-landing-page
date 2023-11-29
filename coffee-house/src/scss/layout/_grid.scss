@@ -19,7 +19,12 @@
 }
 
 .grid-enjoy {
-  display: grid;
-  grid-template-columns: 100px 557px 1fr;
-  grid-template-rows: 100px 444px 100px;
+  @include grid(100px 557px 1fr, 100px 444px 100px)
+}
+
+.grid-favourites-coffee {
+  @include grid(60px 1fr 60px, 75px 640px 4px);
+  row-gap: 40px;
+
+  align-items: center;
 }

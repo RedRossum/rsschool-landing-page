@@ -1,5 +1,5 @@
 .navigation {
-  @include flex(center,center,row);
+  @include flex(center, center, row);
   list-style-type: none;
 
   column-gap: 42.5px;
@@ -9,14 +9,30 @@
   margin-right: 12px;
 
   .navigation__link {
+    display: inline-block;
     text-decoration: none;
 
     @include font(1.6rem, 2.4rem, bold);
 
     color: $color-link;
 
-    &:hover {
-      color: $color-primary;
+    line-height: 150%;
+
+    height: 30px;
+
+    &::after {
+      display: block;
+      content: "";
+      width: 0;
+      height: 2px;
+      margin: 0 auto;
+      background-color: $color-border-dark;
+      @extend %transition;
+    }
+
+    &:hover::after,&:focus::after {
+      width: 100%;
+      @extend %transition;
     }
   }
 

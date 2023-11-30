@@ -21,6 +21,30 @@
    padding: 0;
 
    background: url("../../assets/icons/coffee-cup.svg") 100% 46% no-repeat;
+
+   display: inline-block;
+   text-decoration: none;
+
+   @include font(1.6rem, 2.4rem, bold);
+
+   line-height: 150%;
+
+
+   &::after {
+     display: block;
+     content: "";
+     width: 0;
+     height: 2px;
+     margin: 0 auto;
+     background-color: $color-border-dark ;
+     @extend %transition;
+   }
+
+   &:hover::after,&:focus::after {
+     width: 75%;
+     margin-left: 30px;
+     @extend %transition;
+   }
  }
 
   &:hover {

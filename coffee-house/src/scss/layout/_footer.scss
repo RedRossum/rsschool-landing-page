@@ -1,14 +1,18 @@
 .footer {
   margin-top: 100px;
+
   .footer__wrapper {
     background-color: $color-border-dark;
     border-radius: 40px;
   }
+
   .contacts__socials {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+
     .footer__title {
       color: $color-text-light;
+
       .cursive {
         color: $color-text-accent;
       }
@@ -20,16 +24,35 @@
       @include flex(flex-start, center);
       gap: 12px;
 
-      .socials__button{
+      @extend %transition;
+
+      .socials__button {
 
         &:nth-child(1) {
           background: url("../../assets/icons/contacts/twitter.svg") no-repeat 50% 50%;
+
+          &:hover {
+            @extend %transition;
+            background: $color-primary url("../../assets/icons/contacts/twitter-dark.svg") no-repeat 50% 50%;
+          }
         }
+
         &:nth-child(2) {
           background: url("../../assets/icons/contacts/instagram.svg") no-repeat 50% 50%;
+
+          &:hover {
+            @extend %transition;
+            background: $color-primary url("../../assets/icons/contacts/instagram-dark.svg") no-repeat 50% 50%;
+          }
         }
+
         &:nth-child(3) {
-          background: url("../../assets/icons/contacts/twitter.svg") no-repeat 50% 50%;
+          background: url("../../assets/icons/contacts/facebook.svg") no-repeat 50% 50%;
+
+          &:hover {
+            @extend %transition;
+            background: $color-primary url("../../assets/icons/contacts/facebook-dark.svg") no-repeat 50% 50%;
+          }
         }
       }
     }
@@ -47,23 +70,43 @@
       margin-top: 25px;
       margin-bottom: 40px;
 
-      @include font(2,4rem, 3rem, bold)
+      @include font(2, 4rem, 3rem, bold)
     }
+
     .contacts__us-links {
       @include flex(flex-start, flex-start, column);
       gap: 18px;
 
     }
+
     .contacts__us-link {
       padding-left: 29px;
+
       &:nth-child(1) {
         background: url("../../assets/icons/contacts/pin-alt.svg") no-repeat 0 50%;
       }
+
       &:nth-child(2) {
         background: url("../../assets/icons/contacts/phone.svg") no-repeat 0 50%;
       }
+
       &:nth-child(3) {
         background: url("../../assets/icons/contacts/clock.svg") no-repeat 0 50%;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        width: 0;
+        height: 2px;
+        margin: 0 auto;
+        background-color: $color-primary;
+        @extend %transition;
+      }
+
+      &:hover::after, &:focus::after {
+        width: 100%;
+        @extend %transition;
       }
     }
   }

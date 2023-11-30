@@ -1,0 +1,36 @@
+.mobile-app {
+  margin-top: 100px;
+
+  .mobile-app__wrapper {
+    background: url("../../assets/img/mobile-screens.png") no-repeat 100% 0%;
+
+    .mobile-app__cursive {
+      color: $color-text-accent;
+      letter-spacing: 0.01px;
+    }
+
+    .mobile-app__content {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+
+      @include flex(flex-start, space-between, column);
+
+      gap: 40px;
+
+      .mobile-app__text{
+        letter-spacing: 0.53px;
+      }
+
+      .mobile-app__buttons {
+        @include flex(flex-start);
+        gap: 20px;
+
+        .button__text {
+          .button__text-1{
+            @include font(1rem, 1,4rem, bold)
+          }
+        }
+      }
+    }
+  }
+}

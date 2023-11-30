@@ -38,3 +38,7 @@
 .grid-mobile-app {
   @include grid(630px 1fr, 144px 1fr 144px);
 }
+
+.grid-footer {
+  @include grid(100px 530px 100px 530px 100px, 100px 250px 100px);
+}

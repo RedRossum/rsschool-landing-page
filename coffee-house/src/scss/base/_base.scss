@@ -24,9 +24,7 @@ h1 {
 h2,h3,h4,h5 {
   color: $color-heading;
 }
-h1,h3,h4,h5 {
-   letter-spacing: $spacing;
- }
+
 h2 {
   @extend %font-prim;
   @include font(6rem, 7.5rem, bold);

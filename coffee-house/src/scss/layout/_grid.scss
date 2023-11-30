@@ -19,7 +19,7 @@
 }
 
 .grid-enjoy {
-  @include grid(100px 557px 1fr, 100px 444px 100px)
+  @include grid(100px 530px 1fr, 100px 444px 100px)
 }
 
 .grid-favourites-coffee {
@@ -27,4 +27,10 @@
   row-gap: 40px;
 
   align-items: center;
+}
+
+.grid-about {
+  @include grid(1fr 1fr, 225px 430px 1fr 430px);
+
+  gap: 40px;
 }

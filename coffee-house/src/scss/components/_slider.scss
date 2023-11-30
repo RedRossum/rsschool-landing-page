@@ -15,5 +15,9 @@
     .slider-card__price {
       @include font(2.4rem, 3rem, bold);
     }
+
+    .slider-card__text {
+      letter-spacing: 0.034em;
+    }
   }
 }

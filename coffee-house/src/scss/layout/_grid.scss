@@ -42,3 +42,13 @@
 .grid-footer {
   @include grid(100px 530px 100px 530px 100px, 100px 250px 100px);
 }
+
+.grid-menu{
+  @include grid(1fr, 150px 46px 1052px);
+  row-gap: 40px;
+}
+
+.menu__cards-grid{
+  @include grid(repeat(4, 310px), repeat(2, 506px));
+  gap: 40px;
+}

@@ -3,12 +3,12 @@
 
   .about__cursive {
     color: $color-text-accent;
-    letter-spacing: 0.01em;
   }
 
   .about__title {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
+    letter-spacing: -0.4px;
   }
 
   .about__box {

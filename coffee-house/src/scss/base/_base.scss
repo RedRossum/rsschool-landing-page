@@ -3,6 +3,7 @@ html {
   scroll-behavior: smooth;
   font-size: 10px;
 }
+
 *,
 *::before,
 *::after {
@@ -14,6 +15,12 @@ body {
   @extend %font-prim;
   color: $color-text;
   background-color: $color-background;
+
+  //@include flex(flex-start, stretch, column);
+  & section, header, footer {
+    padding: 0 40px;
+  }
+
 }
 
 h1 {
@@ -21,7 +28,8 @@ h1 {
   @include font(7.2rem, 7.56rem, bold);
   color: $color-primary;
 }
-h2,h3,h4,h5 {
+
+h2, h3, h4, h5 {
   color: $color-heading;
 }
 

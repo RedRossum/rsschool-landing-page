@@ -19,6 +19,10 @@ body {
   //@include flex(flex-start, stretch, column);
   & section, header, footer {
     padding: 0 40px;
+
+    @include media-tablet {
+      padding: 0 16px;
+    }
   }
 
 }
@@ -27,6 +31,10 @@ h1 {
   @extend %font-prim;
   @include font(7.2rem, 7.56rem, bold);
   color: $color-primary;
+
+  @include media-tablet {
+    @include font(4.2rem, 4.83rem, bold);
+  }
 }
 
 h2, h3, h4, h5 {
@@ -37,6 +45,9 @@ h2 {
   @extend %font-prim;
   @include font(6rem, 7.5rem, bold);
   color: $color-text;
+  @include media-tablet {
+    @include font(3.2rem, 4rem, bold);
+  }
 }
 
 h3 {

@@ -29,6 +29,9 @@
 
    line-height: 150%;
 
+   @include media-intermediate {
+     display: none;
+   }
 
    &::after {
      display: block;

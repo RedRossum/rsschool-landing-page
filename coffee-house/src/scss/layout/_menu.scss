@@ -6,6 +6,10 @@
     text-align: center;
     padding: 0 250px 0 250px;
 
+    @include media-laptop {
+      padding: 0;
+    }
+
     .cursive {
       color: $color-text-accent;
     }
@@ -15,6 +19,10 @@
     @include flex(center);
     gap: 16px;
     padding: 0;
+
+    @include media-tablet {
+      gap: 8px;
+    }
     .menu__button {
       width: auto;
       height: 46px;
@@ -47,7 +55,11 @@
 
     border: 1px solid $color-border-light;
     border-radius: 40px;
-
+    @include media-laptop {
+      &:nth-child(n + 5) {
+        display: none;
+      }
+    }
     .menu__box {
       @include flex(center, center);
       overflow: hidden;
@@ -78,6 +90,21 @@
 
     .menu__price {
       @include font(2.4rem, 3rem, bold)
+    }
+  }
+
+  .cards-button {
+    width: 60px;
+    height: 60px;
+
+    background: url("../../assets/icons/button-icon-dark.svg");
+
+    display: none;
+
+    justify-self: center;
+
+    @include media-laptop {
+      display: block;
     }
   }
 }

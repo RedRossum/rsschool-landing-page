@@ -12,9 +12,9 @@
     @include media-laptop {
       grid-column: 1 / 2;
       grid-row: 2 / 3;
-      padding-left: 60px;
+      padding: 0 33px 0 60px;
       @include media-tablet {
-        padding-left: 17px;
+        padding: 0 0 0 17px;
       }
     }
 

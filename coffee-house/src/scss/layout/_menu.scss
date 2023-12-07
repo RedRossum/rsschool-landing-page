@@ -55,7 +55,7 @@
 
     border: 1px solid $color-border-light;
     border-radius: 40px;
-    @include media-laptop {
+    @include media-tablet {
       &:nth-child(n + 5) {
         display: none;
       }

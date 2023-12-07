@@ -90,7 +90,7 @@
   @include grid(1fr, 150px 46px 1052px);
   row-gap: 40px;
   @include media-laptop {
-    @include grid(1fr, 225px 46px 1052px 60px);
+    @include grid(1fr, 225px 46px 2144px 60px);
 
     @include media-tablet {
       @include grid(1fr, 120px 46px 2144px 60px);
@@ -102,7 +102,7 @@
   @include grid(repeat(4, 310px), repeat(2, 506px));
   gap: 40px;
   @include media-laptop {
-    @include grid(repeat(2, 310px), repeat(2, 506px));
+    @include grid(repeat(2, 310px), repeat(4, 506px));
     justify-self: center;
 
     @include media-tablet {

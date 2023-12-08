@@ -14,38 +14,49 @@
 
   @extend %transition;
 
- &_menu {
-   width: 100px;
-   height: 60px;
+  &_enjoy {
+    @include media-laptop {
+      background-image: url("../../assets/icons/coffee-cup.svg");
+      background-repeat: no-repeat;
+      background-position: 70% 50%;
+    }
+  }
 
-   padding: 0;
+  &_menu {
+    width: 100px;
+    height: 60px;
 
-   background: url("../../assets/icons/coffee-cup.svg") 100% 46% no-repeat;
+    padding: 0;
 
-   display: inline-block;
-   text-decoration: none;
+    background: url("../../assets/icons/coffee-cup.svg") 100% 46% no-repeat;
 
-   @include font(1.6rem, 2.4rem, bold);
+    display: inline-block;
+    text-decoration: none;
 
-   line-height: 150%;
+    @include font(1.6rem, 2.4rem, bold);
 
+    line-height: 150%;
 
-   &::after {
-     display: block;
-     content: "";
-     width: 0;
-     height: 2px;
-     margin: 0 auto;
-     background-color: $color-border-dark ;
-     @extend %transition;
-   }
+    @include media-intermediate {
+      display: none;
+    }
 
-   &:hover::after,&:focus::after {
-     width: 75%;
-     margin-left: 30px;
-     @extend %transition;
-   }
- }
+    &::after {
+      display: block;
+      content: "";
+      width: 0;
+      height: 2px;
+      margin: 0 auto;
+      background-color: $color-border-dark;
+      @extend %transition;
+    }
+
+    &:hover::after, &:focus::after {
+      width: 75%;
+      margin-left: 30px;
+      @extend %transition;
+    }
+  }
 
   &:hover {
     background-color: $color-primary;
@@ -53,23 +64,26 @@
   }
 
   &_mobile {
-    border: 1px solid $color-border-dark ;
+    border: 1px solid $color-border-dark;
     padding: 5px 25px 6px 63px;
     cursor: pointer;
 
     @extend %transition;
 
-    &:nth-child(1){
+    &:nth-child(1) {
       background: url("../../assets/icons/contacts/Icon-apple.svg") no-repeat 13% 50%;
-      &:hover{
+
+      &:hover {
         background: $color-border-dark url("../../assets/icons/contacts/Icon-apple-light.svg") no-repeat 13% 50%;
         color: $color-border-light;
         @extend %transition;
       }
     }
-    &:nth-child(2){
+
+    &:nth-child(2) {
       background: url("../../assets/icons/contacts/icon-google.svg") no-repeat 13% 50%;
-      &:hover{
+
+      &:hover {
         background: $color-border-dark url("../../assets/icons/contacts/icon-google-light.svg") no-repeat 13% 50%;
         color: $color-border-light;
         @extend %transition;
@@ -114,5 +128,6 @@
   &:hover {
     background: $color-primary url("../../assets/icons/coffee-cup.svg") no-repeat 70% 50%;
     @extend %transition;
+
   }
 }

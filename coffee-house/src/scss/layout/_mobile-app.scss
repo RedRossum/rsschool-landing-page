@@ -2,7 +2,18 @@
   margin-top: 100px;
 
   .mobile-app__wrapper {
-    background: url("../../assets/img/mobile-screens.png") no-repeat 100% 0%;
+    background: url("../../assets/img/mobile-screens.png") no-repeat 100% 0;
+
+    @include media-laptop {
+      background: url("../../assets/img/mobile-screens.png") no-repeat 50% 100%;
+
+      @include media-tablet {
+        background-size: 348px 348px;
+        background-image: url("../../assets/img/mobile-screens.png");
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+      }
+    }
 
     .mobile-app__cursive {
       color: $color-text-accent;
@@ -17,7 +28,7 @@
 
       gap: 40px;
 
-      .mobile-app__text{
+      .mobile-app__text {
 
       }
 
@@ -25,11 +36,20 @@
         @include flex(flex-start);
         gap: 20px;
 
+        @include media-tablet {
+          @include flex(flex-start, flex-start, column);
+        }
+
         .button__text {
-          .button__text-1{
-            @include font(1rem, 1,4rem, bold)
+          .button__text-1 {
+            @include font(1rem, 1, 4rem, bold)
           }
         }
+      }
+
+      @include media-laptop {
+        grid-row: 1 / 2;
+        justify-self: center;
       }
     }
   }

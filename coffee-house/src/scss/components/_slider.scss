@@ -7,6 +7,10 @@
   .slider-card {
     width: 480px;
 
+    @include media-tablet {
+      width: 348px;
+    }
+
     .slider-card__text, .slider-card__title, .slider-card__price {
       text-align: center;
 

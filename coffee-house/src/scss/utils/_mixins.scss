@@ -43,3 +43,7 @@
 @mixin media-mobile {
   @media (max-width: $mobile-width) { @content; }
 }
+
+@mixin media-intermediate {
+  @media (max-width: $intermediate-width) { @content; }
+}

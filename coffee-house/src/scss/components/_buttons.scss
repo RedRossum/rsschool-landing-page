@@ -37,7 +37,7 @@
 
     line-height: 150%;
 
-    @include media-intermediate {
+    @include media-tablet {
       display: none;
     }
 
@@ -129,5 +129,13 @@
     background: $color-primary url("../../assets/icons/coffee-cup.svg") no-repeat 70% 50%;
     @extend %transition;
 
+  }
+}
+
+.button_inner {
+  display: none !important;
+
+  @include media-tablet {
+    display: inline-block !important;
   }
 }

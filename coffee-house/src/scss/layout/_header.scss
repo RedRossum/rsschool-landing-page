@@ -2,34 +2,14 @@
 
   margin-top: 20px;
 
-  .header__wrapper {
-    @include media-laptop {
-
-    }
-
-    .button-burger {
-      width: 100px;
-      height: 60px;
-      background: url("../../assets/icons/button-icon-burger.svg") no-repeat 100% 50%;
-      display: none;
-      @include media-intermediate {
-        display: block;
-      }
-    }
-  }
-}
-
 .logo {
-  @include media-laptop {
-  }
-  @include media-tablet {
-  }
+  z-index: 4;
 }
 
-.header__navigation {
-  @include media-tablet {
 
-  }
 }
+
+
+
 
 

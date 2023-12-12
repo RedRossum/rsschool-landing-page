@@ -7,11 +7,18 @@
   .slider__container {
     overflow: hidden;
     width: 480px;
+    @include media-tablet {
+      width: 348px;
+    }
     .carousel {
       position: relative;
       @include flex(center, center, row);
       width: 1440px;
       left: -480px;
+      @include media-tablet {
+        width: 1044px;
+        left: -348px;
+      }
       .slider-card {
         width: 480px;
 
@@ -44,11 +51,19 @@
 }
 
 @keyframes roll-left {
-  from {left: -480px;}
+  from {left: -348px;}
   to {left: 0;}
+  @include media-tablet {
+    from {left: -348px;}
+    to {left: 0;}
+  }
 }
 
 @keyframes roll-right {
   from {left: -480px;}
   to {left: -960px;}
+  @include media-tablet {
+    from {left: -348px;}
+    to {left: -696px;}
+  }
 }

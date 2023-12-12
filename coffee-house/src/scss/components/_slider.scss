@@ -4,23 +4,51 @@
   grid-row: 2 / 3;
   grid-column: 2 / 3;
 
-  .slider-card {
+  .slider__container {
+    overflow: hidden;
     width: 480px;
+    .carousel {
+      position: relative;
+      @include flex(center, center, row);
+      width: 1440px;
+      left: -480px;
+      .slider-card {
+        width: 480px;
 
-    @include media-tablet {
-      width: 348px;
-    }
+        @include media-tablet {
+          width: 348px;
+        }
 
-    .slider-card__text, .slider-card__title, .slider-card__price {
-      text-align: center;
+        .slider-card__text, .slider-card__title, .slider-card__price {
+          text-align: center;
 
-      margin-top: 17px;
-    }
-    .slider-card__price {
-      @include font(2.4rem, 3rem, bold);
-    }
+          margin-top: 17px;
+        }
 
-    .slider-card__text {
+        .slider-card__price {
+          @include font(2.4rem, 3rem, bold);
+        }
+
+        .slider-card__text {
+        }
+      }
     }
   }
+}
+
+.move-left {
+  animation: roll-left 0.3s;
+}
+.move-right {
+  animation: roll-right 0.3s;
+}
+
+@keyframes roll-left {
+  from {left: -480px;}
+  to {left: 0;}
+}
+
+@keyframes roll-right {
+  from {left: -480px;}
+  to {left: -960px;}
 }

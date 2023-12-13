@@ -48,9 +48,6 @@ const rightCard = document.querySelector("#right-card");
 const leftCard = document.querySelector("#left-card");
 const activeCard = document.querySelector('#active-card');
 
-function renderCard(imgPath, title, text, price) {
-    let cardImg
-}
 
 function moveRight() {
     carousel.classList.add('move-right');

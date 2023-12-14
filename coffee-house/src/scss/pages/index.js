@@ -2,6 +2,7 @@ import '../main.scss';
 // import './menu.html';
 import {products} from '../js/products.js';
 import {Card} from '../js/card.js'
+import {Modal} from '../js/modal.js'
 
 const menu = document.querySelector('.menu');
 menu.classList.toggle('active');
@@ -36,6 +37,7 @@ hamburger.addEventListener('click', function () {
 //render cards
 window.onload = function () {
     renderingMenuCards();
+    addToolsClickHandler();
 };
 
 function renderingMenuCards() {
@@ -76,3 +78,18 @@ function getActualProducts() {
     let category = document.querySelector('.menu__button_selected').innerHTML;
     return products.filter(obj => obj.category === category.toLowerCase());
 }
+
+let cardsBTN = document.querySelector('.cards-button');
+const menuWrapper = document.querySelector('.grid-menu');
+const menuCardsGrid = document.querySelector('.menu__cards-grid');
+cardsBTN.addEventListener('click', function () {
+    const cards = document.querySelectorAll('.menu__card');
+    for (let card of cards) {
+        card.style.display = 'flex';
+    }
+    menuWrapper.classList.toggle('grid-menu');
+    menuWrapper.classList.toggle('grid-menu-s');
+    menuCardsGrid.classList.toggle('menu__cards-grid');
+    menuCardsGrid.classList.toggle('menu__cards-grid-s');
+    cardsBTN.classList.add('display-none')
+});

@@ -87,7 +87,7 @@
 }
 
 .grid-menu {
-  @include grid(1fr, 150px 46px 1052px);
+  @include grid(1fr, 150px 46px minmax(500px ,1052px));
   row-gap: 40px;
   @include media-laptop {
     @include grid(1fr, 225px 46px 1052px 60px);
@@ -98,8 +98,20 @@
   }
 }
 
+.grid-menu-s {
+  @include grid(1fr, 150px 46px 1052px);
+  row-gap: 40px;
+  @include media-laptop {
+    @include grid(1fr, 225px 46px 2144px 60px);
+
+    @include media-tablet {
+      @include grid(1fr, 120px 46px 4288px 60px);
+    }
+  }
+}
+
 .menu__cards-grid {
-  @include grid(repeat(4, 310px), repeat(2, 506px));
+  @include grid(repeat(4, 310px), repeat(2, minmax(0,506px)));
   gap: 40px;
   @include media-laptop {
     @include grid(repeat(2, 310px), repeat(4, 506px));
@@ -107,6 +119,19 @@
 
     @include media-tablet {
       @include grid( 310px, repeat(4, 506px));
+    }
+  }
+}
+
+.menu__cards-grid-s {
+  @include grid(repeat(4, 310px), repeat(2, 506px));
+  gap: 40px;
+  @include media-laptop {
+    @include grid(repeat(2, 310px), repeat(8, 506px));
+    justify-self: center;
+
+    @include media-tablet {
+      @include grid( 310px, repeat(8, 506px));
     }
   }
 }

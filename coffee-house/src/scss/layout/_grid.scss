@@ -25,7 +25,7 @@
     @include grid(60px 530px 1fr, 100px 444px 100px);
 
     @include media-tablet {
-      @include grid(16px minmax(auto, 380px) 16px, 60px 432px 60px);
+      @include grid(16px minmax(300px, 380px) 16px minmax(0, auto), 60px 432px 60px);
     }
   }
 }

@@ -1,0 +1,110 @@
+.menu {
+  margin-top: 20px;
+
+  .menu-page__title {
+    color: $color-text;
+    text-align: center;
+    padding: 0 250px 0 250px;
+
+    @include media-laptop {
+      padding: 0;
+    }
+
+    .cursive {
+      color: $color-text-accent;
+    }
+  }
+
+  .menu-buttons {
+    @include flex(center);
+    gap: 16px;
+    padding: 0;
+
+    @include media-tablet {
+      gap: 8px;
+    }
+    .menu__button {
+      width: auto;
+      height: 46px;
+      padding: 11px 16px 8px 45px;
+      border: 1px solid $color-border-light;
+      border-radius: 100px;
+      &:nth-child(1) {
+        background: url("../../assets/icons/icon-cup.svg") 9% 50% no-repeat;
+      }
+      &:nth-child(2) {
+        background: url("../../assets/icons/icon-teapot.svg") 9% 50% no-repeat;
+      }
+      &:nth-child(3) {
+        background: url("../../assets/icons/icon-cake.svg") 9% 50% no-repeat;
+      }
+      &_selected {
+        background-color: $color-border-dark !important;
+        color: $color-text-light;
+      }
+      &:hover {
+        background-color: $color-border-dark;
+        color: $color-text-light;
+      }
+    }
+  }
+
+  .menu__card {
+    @include flex(flex-start, flex-start, column);
+    gap: 20px;
+
+    border: 1px solid $color-border-light;
+    border-radius: 40px;
+    @include media-laptop {
+      &:nth-child(n + 5) {
+        display: none;
+      }
+    }
+    .menu__box {
+      @include flex(center, center);
+      overflow: hidden;
+      border-radius: 40px;
+
+      width: 309px;
+      height: 310px;
+
+      .menu__img {
+        max-width: initial;
+        @extend %transition;
+        &:hover{
+          transform: scale(0.92);
+          @extend %transition;
+        }
+      }
+    }
+
+    .menu__card-content {
+      @include flex(space-between, flex-start, column);
+      padding: 0 20px;
+      height: 156px;
+    }
+
+    .menu__text {
+      min-height: 72px;
+    }
+
+    .menu__price {
+      @include font(2.4rem, 3rem, bold)
+    }
+  }
+
+  .cards-button {
+    width: 60px;
+    height: 60px;
+
+    background: url("../../assets/icons/button-icon-dark.svg");
+
+    display: none;
+
+    justify-self: center;
+
+    @include media-laptop {
+      display: block;
+    }
+  }
+}

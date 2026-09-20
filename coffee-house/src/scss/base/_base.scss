@@ -1,0 +1,67 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  @include font(1.6rem, 2.4rem);
+  @extend %font-prim;
+  color: $color-text;
+  background-color: $color-background;
+
+  //@include flex(flex-start, stretch, column);
+  & section, header, footer {
+    padding: 0 40px;
+
+    @include media-tablet {
+      padding: 0 16px;
+    }
+  }
+
+}
+
+h1 {
+  @extend %font-prim;
+  @include font(7.2rem, 7.56rem, bold);
+  color: $color-primary;
+
+  @include media-tablet {
+    @include font(4.2rem, 4.83rem, bold);
+  }
+}
+
+h2, h3, h4, h5 {
+  color: $color-heading;
+}
+
+h2 {
+  @extend %font-prim;
+  @include font(6rem, 7.5rem, bold);
+  color: $color-text;
+  @include media-tablet {
+    @include font(3.2rem, 4rem, bold);
+  }
+}
+
+h3 {
+  @extend %font-prim;
+  @include font(2.4rem, 3rem, bold);
+}
+
+h4 {
+  @extend %font-prim;
+  @include font(2rem, 2.3rem);
+}
+
+h5 {
+  @extend %font-prim;
+  @include font(1.5rem, 1.65rem);
+}
+

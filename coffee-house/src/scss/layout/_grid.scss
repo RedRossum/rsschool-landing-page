@@ -1,0 +1,112 @@
+.grid-main-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+}
+
+.grid-our-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+}
+
+.grid-header {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  grid-template-rows: 60px;
+}
+
+.grid-enjoy {
+  @include grid(100px 530px 1fr, 100px 444px 100px);
+
+  @include media-laptop {
+    @include grid(60px 530px 1fr, 100px 444px 100px);
+
+    @include media-tablet {
+      @include grid(16px minmax(auto, 380px) 16px, 60px 432px 60px);
+    }
+  }
+}
+
+.grid-favourites-coffee {
+  @include grid(60px 1fr 60px, 75px 640px 4px);
+
+  @include media-laptop {
+    @include grid(60px 1fr 60px, 150px 640px 4px);
+
+    @include media-tablet {
+      @include grid(1px 1fr 1px, 1fr 532px 4px);
+    }
+  }
+
+  row-gap: 40px;
+
+  align-items: center;
+}
+
+.grid-about {
+  @include grid(1fr 1fr, 225px 430px 1fr 430px);
+
+  gap: 40px;
+
+  @include media-laptop {
+    @include grid(1fr, 1fr 590px 590px);
+    grid-column-gap: 0;
+    grid-row-gap: 40px;
+  }
+}
+
+.grid-mobile-app {
+  @include grid(630px 1fr, 144px 1fr 144px);
+  @include media-laptop {
+    @include grid(688px, 342px 630px);
+    grid-row-gap: 100px;
+    justify-content: center;
+
+    @include media-tablet {
+      @include grid(348px, 380px 348px);
+      grid-row-gap: 40px;
+    }
+  }
+}
+
+.grid-footer {
+  @include grid(100px 530px 100px 530px 100px, 100px 250px 100px);
+
+  @include media-laptop {
+
+    @include grid(688px, 100px 250px 68px 186px 132px);
+    justify-content: center;
+
+    @include media-tablet {
+      @include grid(348px, 60px 180px 10px 145px 132px);
+    }
+  }
+}
+
+.grid-menu {
+  @include grid(1fr, 150px 46px 1052px);
+  row-gap: 40px;
+  @include media-laptop {
+    @include grid(1fr, 225px 46px 1052px 60px);
+
+    @include media-tablet {
+      @include grid(1fr, 120px 46px 2144px 60px);
+    }
+  }
+}
+
+.menu__cards-grid {
+  @include grid(repeat(4, 310px), repeat(2, 506px));
+  gap: 40px;
+  @include media-laptop {
+    @include grid(repeat(2, 310px), repeat(4, 506px));
+    justify-self: center;
+
+    @include media-tablet {
+      @include grid( 310px, repeat(4, 506px));
+    }
+  }
+}

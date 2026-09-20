@@ -1,0 +1,19 @@
+.layout-5-column {
+  @include columns($width: 0%);
+}
+
+.layout-4-column {
+  flex-wrap: wrap;
+}
+
+.layout-3-column {
+  @include columns($width: 0%);
+}
+
+.layout-2-column {
+  @include flex(spacespace-between);
+
+  @include media-laptop {
+    @include flex(space-between, center, column);
+  }
+}

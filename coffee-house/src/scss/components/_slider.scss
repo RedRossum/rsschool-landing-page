@@ -1,0 +1,26 @@
+.slider {
+  @include flex(center, center, row);
+
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+
+  .slider-card {
+    width: 480px;
+
+    @include media-tablet {
+      width: 348px;
+    }
+
+    .slider-card__text, .slider-card__title, .slider-card__price {
+      text-align: center;
+
+      margin-top: 17px;
+    }
+    .slider-card__price {
+      @include font(2.4rem, 3rem, bold);
+    }
+
+    .slider-card__text {
+    }
+  }
+}

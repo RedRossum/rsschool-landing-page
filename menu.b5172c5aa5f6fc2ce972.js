@@ -2,6 +2,716 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/scss/js/card.js":
+/*!*****************************!*\
+  !*** ./src/scss/js/card.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Card: () => (/* binding */ Card)
+/* harmony export */ });
+class Card {
+  constructor(_ref) {
+    let {
+      name,
+      description,
+      price,
+      category,
+      sizes
+    } = _ref;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.category = category;
+  }
+  renderingCard() {
+    let template = '';
+    let card = document.createElement('div');
+    card.className = 'menu__card';
+    template += "<div class=\"menu__box\"><img class=\"menu__img\" src=\"assets/".concat(this.name, ".png\" alt=\"").concat(this.name, "\"></div>");
+    template += "<div class=\"menu__card-content\">\n          <h3 class=\"menu__title\">".concat(this.name, "</h3>\n          <p class=\"menu__text\">").concat(this.description, "</p>\n          <p class=\"menu__price\">").concat(this.price, "</p></div>\n        </div>");
+    card.innerHTML = template;
+    return card;
+  }
+}
+
+/***/ }),
+
+/***/ "./src/scss/js/modal.js":
+/*!******************************!*\
+  !*** ./src/scss/js/modal.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Modal: () => (/* binding */ Modal)
+/* harmony export */ });
+class Modal {
+  constructor(classes) {
+    this.classes = classes;
+    this.modal = '';
+    this.modalContent = '';
+    this.modalCloseBtn = '';
+    this.overlay = '';
+  }
+  buildModal(content) {
+    //Overlay
+    this.overlay = this.createDomNode(this.overlay, 'div', 'overlay', 'overlay_modal');
+
+    //Modal
+    this.modal = this.createDomNode(this.modal, 'div', 'modal', this.classes);
+
+    //Modal content
+    this.modalContent = this.createDomNode(this.modalContent, 'div', 'modal__content');
+
+    //Close Button
+    this.modalCloseBtn = this.createDomNode(this.modalCloseBtn, 'span', 'modal__close-icon');
+    this.modalCloseBtn.innerHTML = '<svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.4239 10.5172L20.6009 2.33999C21.1331 1.80809 21.1331 0.948089 20.6009 0.416194C20.0 69 -0.115701 19.209 -0.115701 18.6771 0.416194L10.4999 8.59343L2.3229 0.416194C1.79076 -0.115701 0.931004 -0.115701 0.399108 0.416194C-0.133036 0.948089 -0.133036 1.80809 0.399108 2.33999L8.5761 10.5172L0.399108 18.6945C-0.133036 19.2263 -0.133036 20.0863 0.399108 20.6182C0.664184 20.8836 1.01272 21.0169 1.361 21.0169C1.70929 21.0169 2.05758 20.8836 2.3229 20.6182L10.4999 12.441L18.6771 20.6182C18.9425 20.8836 19.2907 21.0169 19.639 21.0169C19.9873 21.0169 20.3356 20.8836 20.6009 20.6182C21.1331 20.0863 21.1331 19.2263 20.6009 18.6945L12.4239 10.5172Z" fill="#2F281E"/></svg>';
+    this.setContent(content);
+    this.appendModalElements();
+
+    // Bind Events
+    this.bindEvents();
+
+    // Open Modal
+    this.openModal();
+  }
+  createDomNode(node, element) {
+    node = document.createElement(element);
+    for (var _len = arguments.length, classes = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      classes[_key - 2] = arguments[_key];
+    }
+    node.classList.add(...classes);
+    return node;
+  }
+  setContent(content) {
+    if (typeof content === 'string') {
+      this.modalContent.innerHTML = content;
+    } else {
+      this.modalContent.innerHTML = '';
+      this.modalContent.appendChild(content);
+    }
+  }
+  appendModalElements() {
+    this.modal.append(this.modalCloseBtn);
+    this.modal.append(this.modalContent);
+    this.overlay.append(this.modal);
+  }
+  bindEvents() {
+    this.modalCloseBtn.addEventListener('click', this.closeModal);
+    this.overlay.addEventListener('click', this.closeModal);
+  }
+  openModal() {
+    console.log(this.overlay);
+    document.body.append(this.overlay);
+  }
+  closeModal(e) {
+    let classes = e.target.classList;
+    if (classes.contains('overlay') || classes.contains('modal__close-icon')) {
+      document.querySelector('.overlay').remove();
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./src/scss/js/products.js":
+/*!*********************************!*\
+  !*** ./src/scss/js/products.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   products: () => (/* binding */ products)
+/* harmony export */ });
+const products = [{
+  "name": "Irish coffee",
+  "description": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
+  "price": "7.00",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Kahlua coffee",
+  "description": "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
+  "price": "7.00",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Honey raf",
+  "description": "Espresso with frothed milk, cream and aromatic honey",
+  "price": "5.50",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Ice cappuccino",
+  "description": "Cappuccino with soft thick foam in summer version with ice",
+  "price": "5.00",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Espresso",
+  "description": "Classic black coffee",
+  "price": "4.50",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Latte",
+  "description": "Espresso coffee with the addition of steamed milk and dense milk foam",
+  "price": "5.50",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Latte macchiato",
+  "description": "Espresso with frothed milk and chocolate",
+  "price": "5.50",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Coffee with cognac",
+  "description": "Fragrant black coffee with cognac and whipped cream",
+  "price": "6.50",
+  "category": "coffee",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Cinnamon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Moroccan",
+  "description": "Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint",
+  "price": "4.50",
+  "category": "tea",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Lemon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Ginger",
+  "description": "Original black tea with fresh ginger, lemon and honey",
+  "price": "5.00",
+  "category": "tea",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Lemon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Cranberry",
+  "description": "Invigorating black tea with cranberry and honey",
+  "price": "5.00",
+  "category": "tea",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Lemon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Sea buckthorn",
+  "description": "Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon",
+  "price": "5.50",
+  "category": "tea",
+  "sizes": {
+    "s": {
+      "size": "200 ml",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "300 ml",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "400 ml",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Sugar",
+    "add-price": "0.50"
+  }, {
+    "name": "Lemon",
+    "add-price": "0.50"
+  }, {
+    "name": "Syrup",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Marble cheesecake",
+  "description": "Philadelphia cheese with lemon zest on a light sponge cake and red currant jam",
+  "price": "3.50",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Red velvet",
+  "description": "Layer cake with cream cheese frosting",
+  "price": "4.00",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Cheesecakes",
+  "description": "Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar",
+  "price": "4.50",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Creme brulee",
+  "description": "Delicate creamy dessert in a caramel basket with wild berries",
+  "price": "4.00",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Pancakes",
+  "description": "Tender pancakes with strawberry jam and fresh strawberries",
+  "price": "4.50",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Honey cake",
+  "description": "Classic honey cake with delicate custard",
+  "price": "4.50",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Chocolate cake",
+  "description": "Cake with hot chocolate filling and nuts with dried apricots",
+  "price": "5.50",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}, {
+  "name": "Black forest",
+  "description": "A combination of thin sponge cake with cherry jam and light chocolate mousse",
+  "price": "6.50",
+  "category": "dessert",
+  "sizes": {
+    "s": {
+      "size": "50 g",
+      "add-price": "0.00"
+    },
+    "m": {
+      "size": "100 g",
+      "add-price": "0.50"
+    },
+    "l": {
+      "size": "200 g",
+      "add-price": "1.00"
+    }
+  },
+  "additives": [{
+    "name": "Berries",
+    "add-price": "0.50"
+  }, {
+    "name": "Nuts",
+    "add-price": "0.50"
+  }, {
+    "name": "Jam",
+    "add-price": "0.50"
+  }]
+}];
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/group-css-media-queries-loader/lib/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[5]!./src/scss/main.scss":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/group-css-media-queries-loader/lib/index.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[5]!./src/scss/main.scss ***!
@@ -1808,82 +2518,6 @@ module.exports = function (item) {
 
 /***/ }),
 
-/***/ "./src/index.html":
-/*!************************!*\
-  !*** ./src/index.html ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/html-loader/dist/runtime/getUrl.js */ "./node_modules/html-loader/dist/runtime/getUrl.js");
-/* harmony import */ var _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/coffee-cup-f.png */ "./src/assets/img/coffee-cup-f.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/icons/logo.svg */ "./src/assets/icons/logo.svg"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/video.mp4 */ "./src/assets/video.mp4"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/cards/coffee-slider-3.png */ "./src/assets/img/cards/coffee-slider-3.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_4___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/cards/coffee-slider-1.png */ "./src/assets/img/cards/coffee-slider-1.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_5___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/cards/coffee-slider-2.png */ "./src/assets/img/cards/coffee-slider-2.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_6___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/about-2.png */ "./src/assets/img/about-2.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_7___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/about-3.png */ "./src/assets/img/about-3.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_8___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/about-4.png */ "./src/assets/img/about-4.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_9___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/img/about-1.png */ "./src/assets/img/about-1.png"), __webpack_require__.b);
-// Module
-var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
-var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
-var ___HTML_LOADER_REPLACEMENT_2___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_2___);
-var ___HTML_LOADER_REPLACEMENT_3___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_3___);
-var ___HTML_LOADER_REPLACEMENT_4___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_4___);
-var ___HTML_LOADER_REPLACEMENT_5___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_5___);
-var ___HTML_LOADER_REPLACEMENT_6___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_6___);
-var ___HTML_LOADER_REPLACEMENT_7___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_7___);
-var ___HTML_LOADER_REPLACEMENT_8___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_8___);
-var ___HTML_LOADER_REPLACEMENT_9___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_9___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/x-icon\">\r\n  <link href=\"https://fonts.cdnfonts.com/css/inter\" rel=\"stylesheet\">\r\n  <title>Coffee-house</title>\r\n</head>\r\n<body>\r\n<div class=\"body__wrapper\">\r\n  <header class=\"header\">\r\n    <div class=\"wrapper header__wrapper grid-header\">\r\n      <a class=\"logo\" href=\"./index.html\">\r\n        <img class=\"logo-icon\" src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" alt=\"logo\">\r\n      </a>\r\n      <nav class=\"header__navigation\">\r\n        <ul class=\"navigation\">\r\n          <li><a class=\"navigation__link \" href=\"#favourites-coffee\">Favorite coffee</a></li>\r\n          <li><a class=\"navigation__link \" href=\"#about\">About</a></li>\r\n          <li><a class=\"navigation__link\" href=\"#mobile-app\">Mobile app</a></li>\r\n          <li><a class=\"navigation__link\" href=\"#footer\">Contact us</a></li>\r\n          <li><a class=\"navigation__link button button_menu button_inner\" href=\"menu.html\">Menu</a></li>\r\n        </ul>\r\n      </nav>\r\n      <button class=\"button-theme-switch\">\r\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"88\" height=\"44\" viewBox=\"0 0 88 44\" fill=\"none\">\r\n          <rect x=\"0.5\" y=\"0.5\" width=\"87\" height=\"43\" rx=\"21.5\" stroke=\"#C1B6AD\"/>\r\n          <rect class=\"circle-sun-icon\" x=\"4\" y=\"4\" width=\"36\" height=\"36\" rx=\"18\" fill=\"#B0907A\"/>\r\n          <path class=\"switch-sun-icon\" xmlns=\"http://www.w3.org/2000/svg\" d=\"M21 14V12C21 11.45 21.45 11 22 11C22.55 11 23 11.45 23 12V14C23 14.55 22.55 15 22 15C21.45 15 21 14.55 21 14ZM28.36 17.05L29.77 15.63C30.16 15.24 30.16 14.61 29.77 14.22C29.38 13.83 28.75 13.83 28.36 14.22L26.95 15.64C26.56 16.03 26.56 16.66 26.95 17.05C27.34 17.44 27.97 17.44 28.36 17.05ZM32 21H30C29.45 21 29 21.45 29 22C29 22.55 29.45 23 30 23H32C32.55 23 33 22.55 33 22C33 21.45 32.55 21 32 21ZM22 29C21.45 29 21 29.45 21 30V32C21 32.55 21.45 33 22 33C22.55 33 23 32.55 23 32V30C23 29.45 22.55 29 22 29ZM15.64 17.05L14.22 15.64C13.83 15.25 13.83 14.61 14.22 14.23C14.61 13.85 15.25 13.84 15.63 14.23L17.04 15.64C17.43 16.03 17.43 16.67 17.04 17.05C16.65 17.43 16.02 17.44 15.64 17.05ZM26.95 26.95C26.56 27.34 26.56 27.98 26.95 28.36L28.36 29.77C28.75 30.16 29.39 30.16 29.77 29.77C30.16 29.38 30.16 28.74 29.77 28.36L28.36 26.95C27.98 26.56 27.34 26.56 26.95 26.95ZM12 23H14C14.55 23 15 22.55 15 22C15 21.45 14.55 21 14 21H12C11.45 21 11 21.45 11 22C11 22.55 11.45 23 12 23ZM15.64 29.78L17.05 28.37C17.44 27.98 17.44 27.34 17.05 26.96C16.66 26.58 16.02 26.57 15.64 26.96L14.23 28.37C13.84 28.76 13.84 29.4 14.23 29.78C14.61 30.17 15.25 30.17 15.64 29.78ZM22 16C18.69 16 16 18.69 16 22C16 25.31 18.69 28 22 28C25.31 28 28 25.31 28 22C28 18.69 25.31 16 22 16Z\" fill=\"#E1D4C9\"/>\r\n          <rect class=\"circle-moon-icon\" x=\"48\" y=\"4\" width=\"36\" height=\"36\" rx=\"18\" fill=\"#665F55\"/>\r\n          <path class=\"switch-moon-icon\" d=\"M66 13C61.03 13 57 17.03 57 22C57 26.97 61.03 31 66 31C70.97 31 75 26.97 75 22C75 21.54 74.96 21.08 74.9 20.64C73.92 22.01 72.32 22.9 70.5 22.9C67.52 22.9 65.1 20.48 65.1 17.5C65.1 15.69 65.99 14.08 67.36 13.1C66.92 13.04 66.46 13 66 13Z\" fill=\"#E1D4C9\"/>\r\n        </svg>\r\n      </button>\r\n      <button class=\"button button_menu our-page\">Menu</button>\r\n      <div class=\"header__hamburger\">\r\n      <span class=\"hamburger\">\r\n        <span class=\"hamburger__line\"></span>\r\n        <span class=\"hamburger__line\"></span>\r\n      </span>\r\n      </div>\r\n    </div>\r\n  </header>\r\n\r\n  <section class=\"enjoy\">\r\n    <div class=\"wrapper grid-enjoy enjoy__wrapper\">\r\n      <video autoplay loop muted class=\"enjoy__video\">\r\n        <source src=\"" + ___HTML_LOADER_REPLACEMENT_2___ + "\" type=\"video/mp4\">\r\n      </video>\r\n      <div class=\"enjoy__content\">\r\n        <h1 class=\"enjoy__title\"><i class=\"enjoy__cursive\">Enjoy</i> premium coffee at our charming cafe</h1>\r\n        <p class=\"enjoy__text\">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a\r\n          popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite\r\n          beverage.</p>\r\n        <button class=\"button button_enjoy animation our-page\">Menu</button>\r\n      </div>\r\n    </div>\r\n  </section>\r\n\r\n  <section class=\"favourites-coffee\" id=\"favourites-coffee\">\r\n    <div class=\"wrapper grid-favourites-coffee favourites-coffee__wrapper\">\r\n      <h2 class=\"favourites-coffee__title\">Choose your <i class=\"favourites-coffee__cursive\">favorite</i> coffee</h2>\r\n      <div class=\"slider-control left\"></div>\r\n\r\n      <div class=\"slider\">\r\n        <div class=\"slider__container\">\r\n          <div class=\"carousel\">\r\n            <div class=\"slider-card\">\r\n              <div class=\"slider-card__content\" id=\"left-card\">\r\n                <img class=\"slider-card__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_3___ + "\" alt=\"Ice coffee\">\r\n                <h3 class=\"slider-card__title\">Ice coffee</h3>\r\n                <p class=\"slider-card__text\">A popular summer drink that tones and invigorates. Prepared from coffee,\r\n                  milk\r\n                  and ice.</p>\r\n                <p class=\"slider-card__price\">$4.50</p>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"slider-card\">\r\n              <div class=\"slider-card__content\" id=\"active-card\">\r\n                <img class=\"slider-card__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\" alt=\"S’mores Frappuccino\">\r\n                <h3 class=\"slider-card__title\">S’mores Frappuccino</h3>\r\n                <p class=\"slider-card__text\">This new drink takes an espresso and mixes it with brown sugar and cinnamon\r\n                  before being topped with oat milk.</p>\r\n                <p class=\"slider-card__price\">$5.50</p>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"slider-card\" id=\"right-card\">\r\n              <div class=\"slider-card__content\">\r\n                <img class=\"slider-card__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_5___ + "\" alt=\"Caramel Macchiato\">\r\n                <h3 class=\"slider-card__title\">Caramel Macchiato</h3>\r\n                <p class=\"slider-card__text\">Fragrant and unique classic espresso with rich caramel-peanut syrup, with\r\n                  cream under whipped thick foam.</p>\r\n                <p class=\"slider-card__price\">$5.00</p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"slider-control right\"></div>\r\n\r\n      <div class=\"progress-bar-wrapper\">\r\n        <div class=\"progress-bar active-bar\"></div>\r\n        <div class=\"progress-bar\"></div>\r\n        <div class=\"progress-bar\"></div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n\r\n  <section class=\"about\" id=\"about\">\r\n    <div class=\"wrapper grid-about about__wrapper\">\r\n      <h2 class=\"about__title\">Resource is <i class=\"about__cursive\">the perfect and cozy place</i> where you can enjoy\r\n        a\r\n        variety of hot beverages,\r\n        relax, catch up with friends, or get some work done.</h2>\r\n      <div class=\"about__box\"><img class=\"about__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"cup\"></div>\r\n      <div class=\"about__box\"><img class=\"about__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"man\"></div>\r\n      <div class=\"about__box\"><img class=\"about__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_8___ + "\" alt=\"couple\"></div>\r\n      <div class=\"about__box\"><img class=\"about__img\" src=\"" + ___HTML_LOADER_REPLACEMENT_9___ + "\" alt=\"woman\"></div>\r\n    </div>\r\n  </section>\r\n\r\n  <section class=\"mobile-app\" id=\"mobile-app\">\r\n    <div class=\"wrapper grid-mobile-app mobile-app__wrapper\">\r\n      <div class=\"mobile-app__content\">\r\n        <h2 class=\"mobile-app__title\"><i class=\"mobile-app__cursive\">Download</i> our apps to start ordering</h2>\r\n        <p class=\"mobile-app__text\">Download the Resource app today and experience the comfort of ordering your favorite\r\n          coffee from wherever you are</p>\r\n        <div class=\"mobile-app__buttons\">\r\n          <div class=\"button button_mobile\">\r\n            <div class=\"button__text\">\r\n              <span class=\"button__text-1\">Available on the</span>\r\n              <span class=\"button__text-2\">App Store</span>\r\n            </div>\r\n          </div>\r\n          <div class=\"button button_mobile\">\r\n            <div class=\"button__text\">\r\n              <span class=\"button__text-1\">Available on</span>\r\n              <span class=\"button__text-2\">Google Play</span>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n\r\n  <footer class=\"footer\" id=\"footer\">\r\n    <div class=\"wrapper grid-footer footer__wrapper\">\r\n      <div class=\"contacts__socials\">\r\n        <h2 class=\"footer__title\">Sip, Savor, Smile. <i class=\"cursive\">It’s coffee time!</i></h2>\r\n        <div class=\"socials\">\r\n          <a href=\"\" class=\"socials__button\"></a>\r\n          <a href=\"\" class=\"socials__button\"></a>\r\n          <a href=\"\" class=\"socials__button\"></a>\r\n        </div>\r\n      </div>\r\n      <div class=\"contacts__us\">\r\n        <h3 class=\"contacts__us-title\">Contact us</h3>\r\n        <div class=\"contacts__us-links\">\r\n          <a href=\"https://maps.app.goo.gl/y75h2RaVfCgkk9Hh7\" class=\"contacts__us-link\" target=\"_blank\">8558 Green Rd.,\r\n            &nbsp;LA</a>\r\n          <a href=\"tel:+16035550123\" class=\"contacts__us-link\">+1 (603) 555-0123</a>\r\n          <a href=\"\" class=\"contacts__us-link\">Mon-Sat: 9:00 AM – 23:00 PM</a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </footer>\r\n  <div class=\"blackout hidden\"></div>\r\n</div>\r\n</body>\r\n</html>";
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
-
-/***/ }),
-
-/***/ "./node_modules/html-loader/dist/runtime/getUrl.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/html-loader/dist/runtime/getUrl.js ***!
-  \*********************************************************/
-/***/ ((module) => {
-
-
-
-module.exports = function (url, options) {
-  if (!options) {
-    // eslint-disable-next-line no-param-reassign
-    options = {};
-  }
-
-  if (!url) {
-    return url;
-  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
-
-
-  url = String(url.__esModule ? url.default : url);
-
-  if (options.hash) {
-    // eslint-disable-next-line no-param-reassign
-    url += options.hash;
-  }
-
-  if (options.maybeNeedQuotes && /[\t\n\f\r "'=<>`]/.test(url)) {
-    return "\"".concat(url, "\"");
-  }
-
-  return url;
-};
-
-/***/ }),
-
 /***/ "./src/scss/main.scss":
 /*!****************************!*\
   !*** ./src/scss/main.scss ***!
@@ -2445,96 +3079,6 @@ module.exports = __webpack_require__.p + "assets/arrow-right.svg";
 
 /***/ }),
 
-/***/ "./src/assets/icons/logo.svg":
-/*!***********************************!*\
-  !*** ./src/assets/icons/logo.svg ***!
-  \***********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/logo.svg";
-
-/***/ }),
-
-/***/ "./src/assets/img/about-1.png":
-/*!************************************!*\
-  !*** ./src/assets/img/about-1.png ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/about-1.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/about-2.png":
-/*!************************************!*\
-  !*** ./src/assets/img/about-2.png ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/about-2.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/about-3.png":
-/*!************************************!*\
-  !*** ./src/assets/img/about-3.png ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/about-3.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/about-4.png":
-/*!************************************!*\
-  !*** ./src/assets/img/about-4.png ***!
-  \************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/about-4.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/cards/coffee-slider-1.png":
-/*!**************************************************!*\
-  !*** ./src/assets/img/cards/coffee-slider-1.png ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/coffee-slider-1.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/cards/coffee-slider-2.png":
-/*!**************************************************!*\
-  !*** ./src/assets/img/cards/coffee-slider-2.png ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/coffee-slider-2.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/cards/coffee-slider-3.png":
-/*!**************************************************!*\
-  !*** ./src/assets/img/cards/coffee-slider-3.png ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/coffee-slider-3.png";
-
-/***/ }),
-
-/***/ "./src/assets/img/coffee-cup-f.png":
-/*!*****************************************!*\
-  !*** ./src/assets/img/coffee-cup-f.png ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/coffee-cup-f.png";
-
-/***/ }),
-
 /***/ "./src/assets/img/mobile-screens.png":
 /*!*******************************************!*\
   !*** ./src/assets/img/mobile-screens.png ***!
@@ -2542,16 +3086,6 @@ module.exports = __webpack_require__.p + "assets/coffee-cup-f.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "assets/mobile-screens.png";
-
-/***/ }),
-
-/***/ "./src/assets/video.mp4":
-/*!******************************!*\
-  !*** ./src/assets/video.mp4 ***!
-  \******************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "assets/video.mp4";
 
 /***/ })
 
@@ -2668,7 +3202,7 @@ module.exports = __webpack_require__.p + "assets/video.mp4";
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"main": 0
+/******/ 			"menu": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -2695,24 +3229,21 @@ module.exports = __webpack_require__.p + "assets/video.mp4";
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/*!*********************************!*\
+  !*** ./src/scss/pages/index.js ***!
+  \*********************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ "./src/scss/main.scss");
-/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.html */ "./src/index.html");
+/* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../main.scss */ "./src/scss/main.scss");
+/* harmony import */ var _js_products_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/products.js */ "./src/scss/js/products.js");
+/* harmony import */ var _js_card_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/card.js */ "./src/scss/js/card.js");
+/* harmony import */ var _js_modal_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../js/modal.js */ "./src/scss/js/modal.js");
+
+// import './menu.html';
 
 
-// import './scss/pages/menu.html';
 
-const linkPage = document.querySelector('.our-page');
-const linkPageS = document.querySelector('.animation');
-function moveLocation() {
-  window.location.href = 'menu.html';
-}
-linkPage.addEventListener('click', moveLocation);
-linkPageS.addEventListener('click', moveLocation);
-//burger
+const menu = document.querySelector('.menu');
+menu.classList.toggle('active');
 const hamburger = document.querySelector('.hamburger');
 const navigation = document.querySelector('.navigation');
 const blackout = document.querySelector('.blackout');
@@ -2739,42 +3270,59 @@ hamburger.addEventListener('click', function () {
   });
 });
 
-//slider
-const sliderControlRight = document.querySelector('.right');
-const sliderControlLeft = document.querySelector('.left');
-const carousel = document.querySelector('.carousel');
-const rightCard = document.querySelector("#right-card");
-const leftCard = document.querySelector("#left-card");
-const activeCard = document.querySelector('#active-card');
-function moveRight() {
-  carousel.classList.add('move-right');
-  sliderControlRight.removeEventListener('click', moveRight);
-  sliderControlLeft.removeEventListener('click', moveLeft);
+//render cards
+window.onload = function () {
+  renderingMenuCards();
+  // addToolsClickHandler();
+};
+
+function renderingMenuCards() {
+  let menuCards = getClearMenuCards();
+  let actualProducts = getActualProducts();
+  generateCardInstances(actualProducts).forEach(Card => {
+    menuCards.append(Card.renderingCard());
+  });
 }
-function moveLeft() {
-  carousel.classList.add('move-left');
-  sliderControlLeft.removeEventListener('click', moveLeft);
-  sliderControlRight.removeEventListener('click', moveRight);
+function getClearMenuCards() {
+  let MenuCards = document.querySelector('.menu__cards');
+  MenuCards.innerHTML = '';
+  return MenuCards;
 }
-sliderControlRight.addEventListener('click', moveRight);
-sliderControlLeft.addEventListener('click', moveLeft);
-carousel.addEventListener('animationend', function (event) {
-  let stage;
-  if (event.animationName === 'roll-right') {
-    carousel.classList.remove('move-right');
-    stage = activeCard.innerHTML;
-    activeCard.innerHTML = rightCard.innerHTML;
-    rightCard.innerHTML = leftCard.innerHTML;
-    leftCard.innerHTML = stage;
-  } else {
-    carousel.classList.remove('move-left');
-    stage = activeCard.innerHTML;
-    activeCard.innerHTML = leftCard.innerHTML;
-    leftCard.innerHTML = rightCard.innerHTML;
-    rightCard.innerHTML = stage;
+function generateCardInstances(actualProducts) {
+  let instances = [];
+  actualProducts.forEach(prodObj => {
+    instances.push(new _js_card_js__WEBPACK_IMPORTED_MODULE_2__.Card(prodObj));
+  });
+  return instances;
+}
+
+//buttons menu category switch
+const menuCategoryBTN = document.querySelector('.menu-buttons');
+menuCategoryBTN.addEventListener('click', function (event) {
+  if (event.target.classList.contains('menu__button')) {
+    let BTN = document.querySelector('.menu__button_selected');
+    BTN.classList.remove('menu__button_selected');
+    event.target.classList.add('menu__button_selected');
+    renderingMenuCards();
   }
-  sliderControlRight.addEventListener('click', moveRight);
-  sliderControlLeft.addEventListener('click', moveLeft);
+});
+function getActualProducts() {
+  let category = document.querySelector('.menu__button_selected').innerHTML;
+  return _js_products_js__WEBPACK_IMPORTED_MODULE_1__.products.filter(obj => obj.category === category.toLowerCase());
+}
+let cardsBTN = document.querySelector('.cards-button');
+const menuWrapper = document.querySelector('.grid-menu');
+const menuCardsGrid = document.querySelector('.menu__cards-grid');
+cardsBTN.addEventListener('click', function () {
+  const cards = document.querySelectorAll('.menu__card');
+  for (let card of cards) {
+    card.style.display = 'flex';
+  }
+  menuWrapper.classList.toggle('grid-menu');
+  menuWrapper.classList.toggle('grid-menu-s');
+  menuCardsGrid.classList.toggle('menu__cards-grid');
+  menuCardsGrid.classList.toggle('menu__cards-grid-s');
+  cardsBTN.classList.add('display-none');
 });
 
 //theme
@@ -2791,4 +3339,4 @@ themeToggleBtn.addEventListener('click', () => {
 
 /******/ })()
 ;
-//# sourceMappingURL=main.38b6db6a0265fcc3940b.js.map
+//# sourceMappingURL=menu.b5172c5aa5f6fc2ce972.js.map

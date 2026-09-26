@@ -139,3 +139,35 @@
     display: inline-block !important;
   }
 }
+
+.button-theme-switch {
+  border: none;
+  background-color: $color-background;
+
+
+  .circle-sun-icon {
+    fill: $color-primary-darker;
+  }
+  .switch-sun-icon {
+
+  }
+
+  .circle-moon-icon {
+    fill: $color-background;
+  }
+  .switch-moon-icon {
+    fill: $color-text;
+
+  }
+
+  &:hover {
+    .circle-moon-icon {
+      fill: $color-border-dark;
+      @extend %transition;
+    }
+    .switch-moon-icon {
+      fill: $color-background;
+      @extend %transition;
+    }
+  }
+}

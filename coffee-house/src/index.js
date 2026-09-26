@@ -2,7 +2,9 @@ import './scss/main.scss';
 import './index.html';
 // import './scss/pages/menu.html';
 
+const importAllImages = require.context('./assets/img/cards', false, /\.png$/);
 
+importAllImages.keys().forEach(importAllImages);
 const linkPage = document.querySelector('.our-page');
 const linkPageS = document.querySelector('.animation');
 
@@ -83,4 +85,17 @@ carousel.addEventListener('animationend', function (event) {
 
     sliderControlRight.addEventListener('click', moveRight);
     sliderControlLeft.addEventListener('click', moveLeft);
+});
+
+//theme
+const themeToggleBtn = document.querySelector('.button-theme-switch');
+const rootHtml = document.documentElement;
+
+if (localStorage.getItem('theme-dark') === 'true') {
+    rootHtml.toggleAttribute('data-theme', true);
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    const isDark = rootHtml.toggleAttribute('data-theme');
+    localStorage.setItem('theme-dark', isDark);
 });

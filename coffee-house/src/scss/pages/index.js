@@ -37,7 +37,7 @@ hamburger.addEventListener('click', function () {
 //render cards
 window.onload = function () {
     renderingMenuCards();
-    addToolsClickHandler();
+    // addToolsClickHandler();
 };
 
 function renderingMenuCards() {
@@ -92,4 +92,17 @@ cardsBTN.addEventListener('click', function () {
     menuCardsGrid.classList.toggle('menu__cards-grid');
     menuCardsGrid.classList.toggle('menu__cards-grid-s');
     cardsBTN.classList.add('display-none')
+});
+
+//theme
+const themeToggleBtn = document.querySelector('.button-theme-switch');
+const rootHtml = document.documentElement;
+
+if (localStorage.getItem('theme-dark') === 'true') {
+    rootHtml.toggleAttribute('data-theme', true);
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    const isDark = rootHtml.toggleAttribute('data-theme');
+    localStorage.setItem('theme-dark', isDark);
 });

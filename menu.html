@@ -7,7 +7,7 @@
   <link rel="icon" href="assets/coffee-cup-f.png" type="image/x-icon">
   <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
   <title>Title</title>
-<script defer src="menu.b5172c5aa5f6fc2ce972.js"></script></head>
+<script defer src="menu.9ff9c2dcb6a4a59c1caa.js"></script></head>
 <body>
 <div class="body__wrapper">
   <header class="header">
@@ -141,5 +141,59 @@
   </footer>
   <div class="blackout hidden"></div>
 </div>
+
+<template id="modal-card-template">
+  <div class="modal-card">
+    <div class="modal-card__container">
+
+      <div class="modal-card__left">
+        <img class="modal-card__image" src="#" alt="">
+      </div>
+
+      <div class="modal-card__right">
+        <h2 class="modal-card__title">Irish coffee</h2>
+        <div class="modal-card__description">Fragrant black coffee with Jameson Irish whiskey and whipped milk</div>
+
+        <div class="modal-card__subtitle">Size</div>
+        <div class="modal-card__options js-size-options">
+          <button class="modal-card__option-btn modal-card__option-btn--active">
+            <span class="modal-card__option-badge">S</span> 200 ml
+          </button>
+          <button class="modal-card__option-btn">
+            <span class="modal-card__option-badge">M</span> 300 ml
+          </button>
+          <button class="modal-card__option-btn">
+            <span class="modal-card__option-badge">L</span> 400 ml
+          </button>
+        </div>
+
+        <div class="modal-card__subtitle">Additives</div>
+        <div class="modal-card__options js-additives-options">
+          <button class="modal-card__option-btn">
+            <span class="modal-card__option-badge">1</span> Sugar
+          </button>
+          <button class="modal-card__option-btn">
+            <span class="modal-card__option-badge">2</span> Cinnamon
+          </button>
+          <button class="modal-card__option-btn">
+            <span class="modal-card__option-badge">3</span> Syrup
+          </button>
+        </div>
+
+        <div class="modal-card__total-row">
+          <span>Total:</span>
+          <span class="js-total-price">$7.00</span>
+        </div>
+
+        <div class="modal-card__info-text">
+          The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+        </div>
+
+        <button class="modal-card__close-btn">Close</button>
+      </div>
+
+    </div>
+  </div>
+</template>
 </body>
 </html>

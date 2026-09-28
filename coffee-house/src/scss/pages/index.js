@@ -106,3 +106,37 @@ themeToggleBtn.addEventListener('click', () => {
     const isDark = rootHtml.toggleAttribute('data-theme');
     localStorage.setItem('theme-dark', isDark);
 });
+//Modal
+const cardContainer = document.querySelector('.menu__cards');
+cardContainer.addEventListener('click', function (event) {
+    if (event.target !== cardContainer) {
+        let menuCard = event.target.closest('.menu__card')
+        if (!menuCard) return;
+        let cardName = menuCard.querySelector('.menu__title');
+
+        renderingModalCards(cardName.innerHTML);
+        activateBlackout()
+    }
+});
+
+function activateBlackout() {
+    blackout.classList.toggle('hidden');
+    document.querySelector('body').classList.toggle('scroll-disabled');
+    blackout.addEventListener('click', function (event) {
+        if (event.target.classList.contains('blackout')) {
+            blackout.classList.add('hidden');
+            document.querySelector('body').classList.remove('scroll-disabled');
+        }
+    });
+}
+
+function renderingModalCards(cardName) {
+    blackout.innerHTML = '';
+    let product = getProduct(cardName);
+    console.log(product)
+    blackout.append(new Modal(product).buildModal());
+}
+
+function getProduct(cardName) {
+    return products.find(obj => obj.name === cardName);
+}

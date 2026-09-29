@@ -10,14 +10,16 @@
 @import 'base/base',
 'base/fonts',
 'base/helpers',
-'base/reset';
+'base/reset',
+'base/modal';
 
 @import 'components/logo',
 'components/nav-item',
 'components/buttons',
 'components/slider',
 'components/slider-control',
-'components/hamburger';
+'components/hamburger',
+'components/blackout';
 
 @import 'layout/header',
 'layout/main',

@@ -16,6 +16,11 @@ body {
   color: $color-text;
   background-color: $color-background;
 
+  .body__wrapper{
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
   //@include flex(flex-start, stretch, column);
   & section, header, footer {
     padding: 0 40px;

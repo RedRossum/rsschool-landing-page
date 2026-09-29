@@ -37,7 +37,7 @@
 
     line-height: 150%;
 
-    @include media-intermediate {
+    @include media-tablet {
       display: none;
     }
 
@@ -129,5 +129,45 @@
     background: $color-primary url("../../assets/icons/coffee-cup.svg") no-repeat 70% 50%;
     @extend %transition;
 
+  }
+}
+
+.button_inner {
+  display: none !important;
+
+  @include media-tablet {
+    display: inline-block !important;
+  }
+}
+
+.button-theme-switch {
+  border: none;
+  background-color: $color-background;
+
+
+  .circle-sun-icon {
+    fill: $color-primary-darker;
+  }
+  .switch-sun-icon {
+
+  }
+
+  .circle-moon-icon {
+    fill: $color-background;
+  }
+  .switch-moon-icon {
+    fill: $color-text;
+
+  }
+
+  &:hover {
+    .circle-moon-icon {
+      fill: $color-border-dark;
+      @extend %transition;
+    }
+    .switch-moon-icon {
+      fill: $color-background;
+      @extend %transition;
+    }
   }
 }

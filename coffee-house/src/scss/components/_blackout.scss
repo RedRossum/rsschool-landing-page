@@ -1,0 +1,18 @@
+.hidden {
+  display: none;
+}
+
+.blackout {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(41, 41, 41, 0.6);
+  cursor: pointer;
+  padding: 20px;
+}
+
+.scroll-disabled {
+  overflow-y: hidden;
+}
